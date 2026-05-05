@@ -1,0 +1,52 @@
+"""Clean-room compatibility layer for the public ``cerebras.pytorch`` API."""
+
+from .backend import (
+    Backend,
+    backend,
+    checkpoint_closure,
+    compile,
+    current_backend,
+    current_torch_device,
+    full,
+    full_like,
+    load,
+    ones,
+    ones_like,
+    save,
+    step_closure,
+    trace,
+    use_cs,
+    zeros,
+    zeros_like,
+)
+from .numpy import from_numpy, to_numpy
+from . import amp, backends, distributed, metrics, optim, sparse, utils
+
+__all__ = [
+    "Backend",
+    "amp",
+    "backend",
+    "backends",
+    "checkpoint_closure",
+    "compile",
+    "current_backend",
+    "current_torch_device",
+    "distributed",
+    "from_numpy",
+    "full",
+    "full_like",
+    "load",
+    "metrics",
+    "ones",
+    "ones_like",
+    "optim",
+    "save",
+    "sparse",
+    "step_closure",
+    "to_numpy",
+    "trace",
+    "use_cs",
+    "utils",
+    "zeros",
+    "zeros_like",
+]
