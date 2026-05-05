@@ -1,0 +1,10 @@
+[project]
+name = "cerebras-pytorch-src"
+version = "0.1.0"
+description = "Recreated source tree for cerebras.pytorch from public API docs."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[tool.uv]
+package = false
