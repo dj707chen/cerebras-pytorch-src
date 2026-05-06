@@ -1,0 +1,21 @@
+# Copyright 2016-2024 Cerebras Systems
+# SPDX-License-Identifier: BSD-3-Clause
+
+from typing import Literal
+
+DEVICE_TYPE_WSE = 'WSE'
+DEVICE_TYPE_LOCALHOST = 'LocalHost'
+DEVICE_TYPE_GLOBALHOST = 'GlobalHost'
+
+BoxDeviceType = Literal[
+    DEVICE_TYPE_WSE, DEVICE_TYPE_LOCALHOST, DEVICE_TYPE_GLOBALHOST
+]
+
+PARTIAL_TYPE_SUM = 'SUM'
+PARTIAL_TYPE_MAX = 'MAX'
+PARTIAL_TYPE_MIN = 'MIN'
+PARTIAL_TYPE_PROD = 'PROD'
+
+ShardingPartialType = Literal[
+    PARTIAL_TYPE_SUM, PARTIAL_TYPE_MAX, PARTIAL_TYPE_MIN, PARTIAL_TYPE_PROD
+]

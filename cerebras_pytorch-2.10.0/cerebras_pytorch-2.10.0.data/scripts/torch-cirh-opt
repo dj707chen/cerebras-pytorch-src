@@ -1,0 +1,13 @@
+#!python
+
+import os
+import subprocess
+import sys
+
+import cerebras.pytorch
+
+if __name__ == "__main__":
+    start_path = cerebras.pytorch.__path__[0]
+    raw_cmd = [os.path.join(start_path, "lib/torch-cirh-opt")]
+    raw_cmd.extend(sys.argv[1:])
+    subprocess.run(raw_cmd)
