@@ -1,0 +1,10 @@
+.venv/
+.python-version.*
+__pycache__/
+*.py[cod]
+build/
+dist/
+*.egg-info/
+.ruff_cache/
+.mypy_cache/
+.pytest_cache/

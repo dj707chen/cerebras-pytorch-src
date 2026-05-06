@@ -1,0 +1,24 @@
+[project]
+name = "cerebras-pytorch"
+version = "2.10.0"
+description = "Local UV project for compiling the unpacked cerebras-pytorch wheel sources."
+requires-python = ">=3.11,<3.12"
+dependencies = []
+
+[project.scripts]
+compile-cerebras = "_cerebras_src_tools.compile_cerebras:main"
+
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.uv]
+package = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["cerebras*", "_cerebras_src_tools*"]
+
+[tool.setuptools.package-data]
+"cerebras.pytorch.lib" = ["*.so", "torch-cirh-opt"]
+"cerebras.pytorch.lib._torch_mlir._mlir_libs" = ["*.so"]
