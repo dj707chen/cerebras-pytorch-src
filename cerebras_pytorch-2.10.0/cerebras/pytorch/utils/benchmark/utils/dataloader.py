@@ -786,7 +786,7 @@ class _MemoryProfiler(Profiler):
 
     # pylint: disable=no-self-use
     @functools.lru_cache(maxsize=1)
-    def _get_process_memory_full_info(self) -> psutil._pslinux:
+    def _get_process_memory_full_info(self):
         """A cached version of `get_process_memory_full_info`."""
         return get_process_memory_full_info()
 
@@ -858,7 +858,7 @@ class _IOProfiler(Profiler):
 
     # pylint: disable=no-self-use
     @functools.lru_cache(maxsize=1)
-    def _get_process_used_io(self) -> psutil._pslinux.pio:
+    def _get_process_used_io(self):
         """A cached version of `get_process_used_io`."""
 
         def map_fn(process: psutil.Process):

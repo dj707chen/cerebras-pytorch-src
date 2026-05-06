@@ -1,0 +1,2 @@
+class RtFxProto:
+    pass
