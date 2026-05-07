@@ -1,10 +1,6 @@
 # Copyright 2016-2023 Cerebras Systems
 # SPDX-License-Identifier: BSD-3-Clause
 
-from cerebras.appliance.pb.workflow.appliance.common.common_config_pb2 import (
-    ExecutionModeKey,
-)
-
 TRAIN = "train"
 EVAL = "eval"
 TRAIN_AND_EVAL = "train_and_eval"
@@ -22,6 +18,9 @@ def is_valid(mode):
 
 def map_mode_to_modekey(mode: str) -> int:
     """Maps PyTorch mode string to appliance mode key."""
+    from cerebras.appliance.pb.workflow.appliance.common.common_config_pb2 import (
+        ExecutionModeKey,
+    )
     if mode == TRAIN:
         return ExecutionModeKey.EMK_TRAIN
     elif mode == EVAL:

@@ -38,6 +38,7 @@ dependencies = [
     "tabulate>=0.9.0",
     "tensorboard>=2.17.1",
     "torch>=2.4.0",
+    "cerebras-appliance",
 ]
 
 [project.urls]
@@ -53,3 +54,6 @@ packages = ["cerebras"]
 
 [tool.uv]
 python-preference = "system"
+
+[tool.uv.sources]
+cerebras-appliance = { path = "../../cerebras-appliance-src/cerebras_appliance-2.10.0", editable = true }

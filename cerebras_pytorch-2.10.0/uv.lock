@@ -48,11 +48,17 @@ wheels = [
 ]
 
 [[package]]
+name = "cerebras-appliance"
+version = "2.10.0"
+source = { editable = "../../cerebras-appliance-src/cerebras_appliance-2.10.0" }
+
+[[package]]
 name = "cerebras-pytorch"
 version = "2.10.0"
 source = { editable = "." }
 dependencies = [
     { name = "boto3" },
+    { name = "cerebras-appliance" },
     { name = "dill" },
     { name = "grpcio" },
     { name = "grpcio-tools" },
@@ -72,6 +78,7 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "boto3", specifier = "<2" },
+    { name = "cerebras-appliance", editable = "../../cerebras-appliance-src/cerebras_appliance-2.10.0" },
     { name = "dill", specifier = ">=0.3.8" },
     { name = "grpcio", specifier = ">=1.51.1" },
     { name = "grpcio-tools", specifier = ">=1.51.1" },

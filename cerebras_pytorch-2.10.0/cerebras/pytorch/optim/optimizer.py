@@ -17,11 +17,6 @@ from cerebras.pytorch.backend import current_backend_impl
 if _generating_docs:
     ParamsT = Union[Iterable[torch.Tensor], Iterable[Dict[str, Any]]]
 
-    class torch:
-        class optim:
-            class Optimizer:
-                pass
-
 
 class Optimizer(torch.optim.Optimizer, ABC):
     """
