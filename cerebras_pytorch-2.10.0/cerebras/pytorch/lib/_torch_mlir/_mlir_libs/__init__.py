@@ -177,4 +177,7 @@ def _site_initialize():
     ir.MLIRError = MLIRError
 
 
-_site_initialize()
+try:
+    _site_initialize()
+except (ModuleNotFoundError, ImportError):
+    pass

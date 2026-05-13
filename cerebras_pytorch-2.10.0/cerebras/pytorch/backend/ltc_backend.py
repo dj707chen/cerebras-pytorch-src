@@ -50,7 +50,10 @@ from cerebras.pytorch.core.constants import INPUT_NAME_PREFIX, STATE_NAME_PREFIX
 from cerebras.pytorch.core.device import LazyDevice
 from cerebras.pytorch.core.modes import EVAL
 from cerebras.pytorch.core.name_scope import ScopeName
-from cerebras.pytorch.cs_op_lib.utils.validate_torch_mlir import check_mlir_text
+try:
+    from cerebras.pytorch.cs_op_lib.utils.validate_torch_mlir import check_mlir_text
+except (ImportError, ModuleNotFoundError):
+    check_mlir_text = None
 from cerebras.pytorch.lib import cerebras_pytorch_lib
 from cerebras.pytorch.storage.serializers import (
     DeferredGraphTensor,

@@ -559,7 +559,13 @@ class Config(Descriptor):
     """
 
     def __set_name__(self, owner, name):
-        if not hasattr(cerebras_pytorch_lib.appliance_file_config, name):
+        try:
+            config = cerebras_pytorch_lib.appliance_file_config
+        except (AttributeError, RuntimeError):
+            super().__set_name__(owner, name)
+            return
+
+        if not hasattr(config, name):
             raise AttributeError(
                 f"Config attribute '{name}' does not exist in "
                 f"appliance_file_config"

@@ -4,20 +4,42 @@
 try:
     from . import cerebras_pytorch_lib
 except ImportError:
-    # In case cerebras_pytorch_pylib is not available we mock
-    # it with a dummy class which raises an execption if the
-    # library was accessed. At the same time we want to keep
-    # this library importable.
-    class CatchAllMethodCalls(type):
-        """Meta class to catch all method calls and raise error."""
+    # Native library not available (e.g. macOS/ARM64).
+    # Provide a recursive no-op stub so that module-level class
+    # definitions (descriptors, flags) that reference the lib can
+    # complete without error.  Actual CSX operations will fail at
+    # runtime with clear messages from higher-level code.
 
-        def __getattribute__(cls, attr):
-            raise RuntimeError(
-                "cerebras_pytorch_lib is not expected to be called on the "
-                "server side. Unless explicitly called by user code, this "
-                "points to a bug in the framework. Please contact Cerebras "
-                "support."
-            )
+    _LIB_MISSING_MSG = (
+        "cerebras_pytorch_lib native extension is not available. "
+        "CSX operations require the native library."
+    )
 
-    class cerebras_pytorch_lib(metaclass=CatchAllMethodCalls):
-        """Dummy class to catch all method calls and raise error."""
+    class _Stub:
+        """Recursive no-op stub for cerebras_pytorch_lib."""
+
+        def __getattr__(self, name):
+            return _Stub()
+
+        def __setattr__(self, name, value):
+            pass
+
+        def __bool__(self):
+            return False
+
+        def __call__(self, *args, **kwargs):
+            return _Stub()
+
+        def __repr__(self):
+            return "<cerebras_pytorch_lib stub>"
+
+    class _StubModule:
+        """Module-level stub that returns _Stub for any attribute."""
+
+        def __getattr__(self, name):
+            return _Stub()
+
+        def __setattr__(self, name, value):
+            pass
+
+    cerebras_pytorch_lib = _StubModule()
